@@ -1,4 +1,8 @@
 import React from "react";
+import PersonIcon from "@mui/icons-material/Person";
+import GroupIcon from "@mui/icons-material/Group";
+import ForumIcon from "@mui/icons-material/Forum";
+import EmailIcon from "@mui/icons-material/Email";
 import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotificationsSharp";
 import { AppBar, Toolbar, Tabs, Tab, Button } from "@mui/material";
 const Navbar = () => {
@@ -14,7 +18,10 @@ const Navbar = () => {
           </Tabs>
 
           <CircleNotificationsSharpIcon sx={{ marginLeft: "auto" }} />
-
+          <EmailIcon />
+          <ForumIcon />
+          <GroupIcon />
+          <PersonIcon />
           <Button sx={{ marginLeft: "auto" }} variant="contained">
             Login{" "}
           </Button>
