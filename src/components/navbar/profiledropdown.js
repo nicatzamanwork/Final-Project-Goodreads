@@ -15,3 +15,23 @@ import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotification
 import { AppBar, Toolbar, Tabs, Tab, Button } from "@mui/material";
 import CommunityDropDown from "./communitydropdown";
 import { width } from "@mui/system";
+
+const ProfileDropDown = () => {
+  return (
+    <PopupState variant="popover" popupId="demo-popup-menu">
+      {(popupState) => (
+        <React.Fragment>
+          <PersonIcon variant="contained" {...bindTrigger(popupState)} />
+
+          <Menu {...bindMenu(popupState)}>
+            <MenuItem onClick={popupState.close}>Profile</MenuItem>
+            <MenuItem onClick={popupState.close}>My account</MenuItem>
+            <MenuItem onClick={popupState.close}>Logout</MenuItem>
+          </Menu>
+        </React.Fragment>
+      )}
+    </PopupState>
+  );
+};
+
+export default ProfileDropDown;

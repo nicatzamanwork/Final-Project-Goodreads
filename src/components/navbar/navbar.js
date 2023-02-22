@@ -1,6 +1,7 @@
 import React from "react";
 import Goodreads from "../assets/goodreadslogo.png";
 import { useState } from "react";
+import CustomizedInputBase from "./searchbar";
 
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
@@ -9,6 +10,7 @@ import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 import PersonIcon from "@mui/icons-material/Person";
 import GroupIcon from "@mui/icons-material/Group";
 import ForumIcon from "@mui/icons-material/Forum";
+import ProfileDropDown from "./profiledropdown";
 import EmailIcon from "@mui/icons-material/Email";
 import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotificationsSharp";
 import { AppBar, Toolbar, Tabs, Tab, Button } from "@mui/material";
@@ -52,12 +54,14 @@ const Navbar = () => {
               )}
             </PopupState>
           </Tabs>
-          ;
+          <CustomizedInputBase />
+
           <CircleNotificationsSharpIcon sx={{ marginLeft: "auto" }} />
           <EmailIcon />
           <ForumIcon />
           <GroupIcon />
-          <PersonIcon />
+          <ProfileDropDown />
+
           <Button
             className="LoginSignup"
             sx={{ marginLeft: "auto" }}
