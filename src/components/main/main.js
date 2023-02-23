@@ -1,10 +1,18 @@
 import React from "react";
-import Navbar from "./Navbar/Navbar";
+import { Box, Card, CardContent, Typography } from "@mui/material";
+import Cards from "./card";
 
 const Main = () => {
   return (
     <div>
-      <Navbar></Navbar>
+      <Box width="300px">
+        <Card>
+          <CardContent>
+            <Typography gutterBottom variant="h5" component="div"></Typography>
+          </CardContent>
+        </Card>
+      </Box>
+      <Cards />
     </div>
   );
 };
