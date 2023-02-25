@@ -24,7 +24,6 @@ export default function Cards() {
     </ImageList>
   );
 }
-
 const itemData = [
   {
     img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",

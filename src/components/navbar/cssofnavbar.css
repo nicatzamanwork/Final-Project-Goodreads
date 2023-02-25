@@ -1,4 +1,4 @@
-.ProfileDropDown{
+/* .ProfileDropDown{
     position: absolute;
     top: 4.5rem;
     right: 1.5rem;
@@ -20,4 +20,7 @@
     background-color: white;
     border-left: 1px solid gray;
     border-top: 1px solid gray;
-}
+} */
+.NavLink {
+    text-decoration: none;
+  }

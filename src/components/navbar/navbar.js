@@ -1,8 +1,7 @@
 import React from "react";
 import Goodreads from "../assets/goodreadslogo.png";
 import { useState } from "react";
-import CustomizedInputBase from "./searchbar";
-
+import Search from "./searchbar";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
@@ -16,6 +15,8 @@ import CircleNotificationsSharpIcon from "@mui/icons-material/CircleNotification
 import { AppBar, Toolbar, Tabs, Tab, Button } from "@mui/material";
 import CommunityDropDown from "./communitydropdown";
 import { width } from "@mui/system";
+import { NavLink } from "react-router-dom";
+import "./cssofnavbar.css";
 const Navbar = () => {
   return (
     <React.Fragment>
@@ -23,14 +24,22 @@ const Navbar = () => {
         <Toolbar>
           <img src={Goodreads} className="image" />
           <Tabs textColor="primary">
-            <Tab label="Home" />
-            <Tab label="My Books" />
+            <Button className="LoginSignup" sx={{ marginLeft: "auto" }}>
+              <NavLink to="/" className="NavLink">
+                Home
+              </NavLink>
+            </Button>
+
+            <Button className="LoginSignup" sx={{ marginLeft: "auto" }}>
+              <NavLink to="/" className="NavLink">
+                My Books
+              </NavLink>
+            </Button>
+
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
-                  <Button variant="contained" {...bindTrigger(popupState)}>
-                    Browse
-                  </Button>
+                  <Button {...bindTrigger(popupState)}>Browse</Button>
                   <Menu {...bindMenu(popupState)}>
                     <MenuItem onClick={popupState.close}>Profile</MenuItem>
                     <MenuItem onClick={popupState.close}>My account</MenuItem>
@@ -42,9 +51,7 @@ const Navbar = () => {
             <PopupState variant="popover" popupId="demo-popup-menu">
               {(popupState) => (
                 <React.Fragment>
-                  <Button variant="contained" {...bindTrigger(popupState)}>
-                    Community
-                  </Button>
+                  <Button {...bindTrigger(popupState)}>Community</Button>
                   <Menu {...bindMenu(popupState)}>
                     <MenuItem onClick={popupState.close}>Profile</MenuItem>
                     <MenuItem onClick={popupState.close}>My account</MenuItem>
@@ -54,7 +61,7 @@ const Navbar = () => {
               )}
             </PopupState>
           </Tabs>
-          <CustomizedInputBase />
+          <Search />
 
           <CircleNotificationsSharpIcon sx={{ marginLeft: "auto" }} />
           <EmailIcon />
@@ -62,19 +69,15 @@ const Navbar = () => {
           <GroupIcon />
           <ProfileDropDown />
 
-          <Button
-            className="LoginSignup"
-            sx={{ marginLeft: "auto" }}
-            variant="contained"
-          >
-            Login{" "}
+          <Button className="LoginSignup" sx={{ marginLeft: "auto" }}>
+            <NavLink to="/signup" className="NavLink">
+              Login{" "}
+            </NavLink>
           </Button>
-          <Button
-            className="LoginSignup"
-            sx={{ marginLeft: "10px" }}
-            variant="contained"
-          >
-            SignUp{" "}
+          <Button className="LoginSignup" sx={{ marginLeft: "10px" }}>
+            <NavLink to="/signup" className="NavLink">
+              Sign Up{" "}
+            </NavLink>
           </Button>
         </Toolbar>
       </AppBar>
