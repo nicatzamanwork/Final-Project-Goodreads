@@ -1,88 +1,68 @@
 import * as React from "react";
-import ImageList from "@mui/material/ImageList";
-import ImageListItem from "@mui/material/ImageListItem";
-import ImageListItemBar from "@mui/material/ImageListItemBar";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Link from "@mui/joy/Link";
+import Card from "@mui/joy/Card";
+import Chip from "@mui/joy/Chip";
+import Typography from "@mui/joy/Typography";
+import ReactStars from "react-rating-stars-component";
 
 export default function Cards() {
+  const ratingChanged = (newRating) => {
+    console.log(newRating);
+  };
   return (
-    <ImageList>
-      {itemData.map((item) => (
-        <ImageListItem key={item.img}>
+    <Card>
+      <Card
+        variant="outlined"
+        orientation="horizontal"
+        sx={{
+          width: 750,
+          gap: 2,
+          "&:hover": {
+            boxShadow: "md",
+            borderColor: "neutral.outlinedHoverBorder",
+          },
+        }}
+      >
+        <AspectRatio ratio="1" sx={{ width: 100 }}>
           <img
-            src={`${item.img}`}
-            srcSet={`${item.img}`}
-            alt={item.title}
+            src="https://images.unsplash.com/photo-1507833423370-a126b89d394b?auto=format&fit=crop&w=90"
+            srcSet="https://images.unsplash.com/photo-1507833423370-a126b89d394b?auto=format&fit=crop&w=90&dpr=2 2x"
             loading="lazy"
+            alt=""
           />
-          <ImageListItemBar
-            title={item.title}
-            subtitle={<span>by: {item.author}</span>}
-            position="below"
-          />
-        </ImageListItem>
-      ))}
-    </ImageList>
+        </AspectRatio>
+        <div>
+          <Typography level="h2" fontSize="lg" id="card-description" mb={0.5}>
+            Yosemite Park
+          </Typography>
+          <Typography fontSize="sm" aria-describedby="card-description" mb={1}>
+            <Link
+              overlay
+              underline="none"
+              href="#interactive-card"
+              sx={{ color: "text.tertiary" }}
+            >
+              California, USA
+            </Link>
+          </Typography>
+        </div>
+        <Chip
+          variant="outlined"
+          color="primary"
+          size="sm"
+          sx={{ pointerEvents: "none", ml: 30 }}
+        >
+          Want to Read
+        </Chip>
+        <ReactStars
+          count={5}
+          onChange={ratingChanged}
+          size={24}
+          activeColor="#ffd700"
+        />
+        ,
+      </Card>
+    </Card>
   );
 }
-const itemData = [
-  {
-    img: "https://images.unsplash.com/photo-1551963831-b3b1ca40c98e",
-    title: "Breakfast",
-    author: "@bkristastucchio",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1551782450-a2132b4ba21d",
-    title: "Burger",
-    author: "@rollelflex_graphy726",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1522770179533-24471fcdba45",
-    title: "Camera",
-    author: "@helloimnik",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c",
-    title: "Coffee",
-    author: "@nolanissac",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1533827432537-70133748f5c8",
-    title: "Hats",
-    author: "@hjrc33",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1558642452-9d2a7deb7f62",
-    title: "Honey",
-    author: "@arwinneil",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1516802273409-68526ee1bdd6",
-    title: "Basketball",
-    author: "@tjdragotta",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1518756131217-31eb79b20e8f",
-    title: "Fern",
-    author: "@katie_wasserman",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1597645587822-e99fa5d45d25",
-    title: "Mushrooms",
-    author: "@silverdalex",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1567306301408-9b74779a11af",
-    title: "Tomato basil",
-    author: "@shelleypauls",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1471357674240-e1a485acb3e1",
-    title: "Sea star",
-    author: "@peterlaster",
-  },
-  {
-    img: "https://images.unsplash.com/photo-1589118949245-7d38baf380d6",
-    title: "Bike",
-    author: "@southside_customs",
-  },
-];

@@ -31,7 +31,7 @@ const Navbar = () => {
             </Button>
 
             <Button className="LoginSignup" sx={{ marginLeft: "auto" }}>
-              <NavLink to="/" className="NavLink">
+              <NavLink to="/mybooks" className="NavLink">
                 My Books
               </NavLink>
             </Button>
@@ -41,9 +41,14 @@ const Navbar = () => {
                 <React.Fragment>
                   <Button {...bindTrigger(popupState)}>Browse</Button>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Profile</MenuItem>
-                    <MenuItem onClick={popupState.close}>My account</MenuItem>
-                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                    <MenuItem onClick={popupState.close}>Fiction</MenuItem>
+                    <MenuItem onClick={popupState.close}>Horror</MenuItem>
+                    <MenuItem onClick={popupState.close}>
+                      Humor and Comedy
+                    </MenuItem>
+                    <MenuItem onClick={popupState.close}>Mystery</MenuItem>
+                    <MenuItem onClick={popupState.close}>Psychology</MenuItem>
+                    <MenuItem onClick={popupState.close}>All Genres</MenuItem>
                   </Menu>
                 </React.Fragment>
               )}
@@ -53,9 +58,13 @@ const Navbar = () => {
                 <React.Fragment>
                   <Button {...bindTrigger(popupState)}>Community</Button>
                   <Menu {...bindMenu(popupState)}>
-                    <MenuItem onClick={popupState.close}>Profile</MenuItem>
-                    <MenuItem onClick={popupState.close}>My account</MenuItem>
-                    <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                    <MenuItem onClick={popupState.close}>Groups</MenuItem>
+                    <MenuItem onClick={popupState.close}>Discussions</MenuItem>
+                    <MenuItem onClick={popupState.close}>Quotes</MenuItem>
+                    <MenuItem onClick={popupState.close}>
+                      Ask the Author
+                    </MenuItem>
+                    <MenuItem onClick={popupState.close}>People</MenuItem>
                   </Menu>
                 </React.Fragment>
               )}

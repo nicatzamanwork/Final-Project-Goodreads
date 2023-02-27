@@ -1,5 +1,5 @@
 import React from "react";
 
-export default function mybooks() {
-  return <div>mybooks</div>;
+export default function Mybooks() {
+  return <div sx={{ mb: 30 }}>My Books</div>;
 }
