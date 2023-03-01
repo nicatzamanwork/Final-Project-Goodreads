@@ -61,7 +61,6 @@ export default function Cards() {
           size={24}
           activeColor="#ffd700"
         />
-        ,
       </Card>
     </Card>
   );
