@@ -14,7 +14,6 @@ import {
   filterProducts,
   filterGender,
   sortByPrice,
-  filterByColor,
   filterBySize,
 } from "../features/productSlice";
 
