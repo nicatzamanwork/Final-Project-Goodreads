@@ -1,6 +1,6 @@
 import "./App.css";
 import GoodreadsHomePage from "./pages/ehtiyat";
-import Home from "./Home";
+import Home from "../src/pages/home";
 import BookList from "./BookList";
 import UserProfile from "./UserProfile";
 import {
