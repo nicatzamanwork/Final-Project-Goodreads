@@ -1,5 +1,8 @@
 import "./App.css";
 import GoodreadsHomePage from "./pages/ehtiyat";
+import Home from "./Home";
+import BookList from "./BookList";
+import UserProfile from "./UserProfile";
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,7 +20,6 @@ function App() {
           <Route exact path="/" component={Home} />
           <Route exact path="/books" component={BookList} />
           <Route exact path="/users/:id" component={UserProfile} />
-          <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
     </div>
