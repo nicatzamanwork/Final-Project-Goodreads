@@ -12,9 +12,14 @@ import {
 function App() {
   return (
     <div className="App">
-      <Routes>
-        <Route path="/ehtiyat" element={<GoodreadsHomePage />} />
-      </Routes>
+      <BrowserRouter>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/books" component={BookList} />
+          <Route exact path="/users/:id" component={UserProfile} />
+          <Route component={NotFound} />
+        </Switch>
+      </BrowserRouter>
     </div>
   );
 }
