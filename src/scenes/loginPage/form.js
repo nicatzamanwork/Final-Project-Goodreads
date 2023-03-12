@@ -96,10 +96,8 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
-
-      navigate("home");
-      console.log(navigate("home"));
     }
+    navigate("/home");
   };
 
   const handleFormSubmit = async (values, onSubmitProps) => {
