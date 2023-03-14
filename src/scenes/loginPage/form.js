@@ -16,7 +16,7 @@ import { useDispatch } from "react-redux";
 import { setLogin } from "../../state";
 
 import Dropzone from "react-dropzone";
-import FlexBetween from "../../components/flexBetween";
+import FlexBetween from "../../components/FlexBetween";
 import { palette } from "@mui/system";
 
 const registerSchema = yup.object().shape({
@@ -80,13 +80,19 @@ const Form = () => {
       setPageType("login");
     }
   };
-
+  const [first, setfirst] = useState();
   const login = async (values, onSubmitProps) => {
     const loggedInResponse = await fetch("http://localhost:5000/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
     });
+    // .then((res) => res.json())
+    // .then((data) => {
+    //   setfirst(data);
+    //   console.log(data);
+    // });
+
     const loggedIn = await loggedInResponse.json();
     onSubmitProps.resetForm();
     if (loggedIn) {
@@ -96,6 +102,7 @@ const Form = () => {
           token: loggedIn.token,
         })
       );
+      console.log(loggedIn);
     }
     navigate("/home");
   };

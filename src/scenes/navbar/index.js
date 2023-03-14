@@ -5,6 +5,10 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import Search from "./searchBar";
+import { NavLink } from "react-router-dom";
+import axios from "axios";
+
+import { useEffect } from "react";
 import {
   AppBar,
   Typography,
@@ -22,6 +26,17 @@ const Navbar = () => {
   console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
   console.log(isMatch);
+
+  const [items, setItems] = useState([]);
+  const [categoryName, setCategoryName] = useState("");
+
+  useEffect(() => {
+    axios
+      .get("http://localhost:5000/api/book/:category")
+      .then((response) => setItems(response.data))
+      .catch((error) => console.error(error));
+  }, []);
+
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
       {(popupState) => (
@@ -42,35 +57,27 @@ const Navbar = () => {
                     value={value}
                     indicatorColor="secondary"
                   >
-                    <Tab label="Home" />
-                    <Tab label="My Books" />
-
-                    <Button variant="contained" {...bindTrigger(popupState)}>
-                      Browse
+                    <Button>
+                      <NavLink to="/home"> Home</NavLink>
                     </Button>
+                    <Button>
+                      <NavLink to="/mybook"> My Book</NavLink>
+                    </Button>
+
+                    <Button {...bindTrigger(popupState)}>Browse</Button>
                     <Menu {...bindMenu(popupState)}>
-                      <MenuItem onClick={popupState.close}>Profile</MenuItem>
-                      <MenuItem onClick={popupState.close}>My account</MenuItem>
-                      <MenuItem onClick={popupState.close}>Logout</MenuItem>
+                      {items.map((item) => (
+                        <MenuItem
+                          key={item.category}
+                          onClick={() => setCategoryName(item.category)}
+                        >
+                          {item.category}
+                        </MenuItem>
+                      ))}
                     </Menu>
 
-                    <Button variant="contained" {...bindTrigger(popupState)}>
-                      Community
-                    </Button>
-                    <Menu {...bindMenu(popupState)}>
-                      <MenuItem onClick={popupState.close}>Profile</MenuItem>
-                      <MenuItem onClick={popupState.close}>My account</MenuItem>
-                      <MenuItem onClick={popupState.close}>Logout</MenuItem>
-                    </Menu>
                     <Tab />
-                    <Search />
                   </Tabs>
-                  <Button sx={{ marginLeft: "auto" }} variant="contained">
-                    Login
-                  </Button>
-                  <Button sx={{ marginLeft: "10px" }} variant="contained">
-                    Sign Up
-                  </Button>
                 </>
               )}
             </Toolbar>
