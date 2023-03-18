@@ -4,13 +4,16 @@ import { ArrowDropDown } from "@material-ui/icons";
 
 const Categories = () => {
   const [categories, setCategories] = useState([]);
+  const [cat, setCat] = useState([]);
 
-  useEffect(() => {
-    fetch("http://localhost:5000/api/book/:category")
-      .then((response) => response.json())
-      .then((data) => setCategories(data))
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   fetch("http://localhost:5000/api/book/")
+  //     .then((response) => response.json())
+  //     .then((data) => setCategories(data))
+  //     .catch((error) => console.error(error));
+  // }, []);
+
+  // console.log(categories);
 
   return (
     <FormControl variant="outlined">
@@ -20,11 +23,9 @@ const Categories = () => {
         label="Book Categories"
         IconComponent={ArrowDropDown}
       >
-        {categories.map((category) => (
-          <MenuItem key={category._id} value={category.name}>
-            {category.name}
-          </MenuItem>
-        ))}
+        <MenuItem>Fiction</MenuItem>
+        <MenuItem>Comedy</MenuItem>
+        <MenuItem>Horror</MenuItem>
       </Select>
     </FormControl>
   );

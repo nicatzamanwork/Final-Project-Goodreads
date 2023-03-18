@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import {
   Drawer,
   List,
@@ -17,12 +18,16 @@ const DrawerComp = () => {
         <List>
           <ListItemButton>
             <ListItemIcon>
-              <ListItemText>Home</ListItemText>
+              <ListItemText>
+                <NavLink to="/home">Home</NavLink>
+              </ListItemText>
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton>
             <ListItemIcon>
-              <ListItemText>My Book</ListItemText>
+              <ListItemText>
+                <NavLink to="/mybook">My Book</NavLink>
+              </ListItemText>
             </ListItemIcon>
           </ListItemButton>
           <ListItemButton>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { add } from "../../store/createSlice";
 import BookList from "../homePage/bookList";
 import Navbar from "../navbar";
 function BooksPage() {
@@ -9,6 +10,11 @@ function BooksPage() {
   function handleBookClick(title) {
     setBooks([...books, { title }]);
   }
+
+  let dispatch = useDispatch();
+  const addToCart = (item) => {
+    dispatch(add(item));
+  };
 
   return (
     <div>
@@ -24,14 +30,18 @@ function BooksPage() {
               <p>Category: {book.category}</p>
               <button
                 style={{
+                  width: "120px",
                   color: "white",
-                  backgroundColor: "green",
+                  backgroundColor: "red",
+                  borderRadius: "15px",
                   borderRadius: "5px",
+                  height: "50px",
+                  cursor: "pointer",
                 }}
+                onClick={() => addToCart(book)}
               >
-                Want to Read
+                Delete from list
               </button>
-              <h1>Heool</h1>
             </div>
           ))}
       </div>

@@ -7,6 +7,7 @@ import PopupState, { bindTrigger, bindMenu } from "material-ui-popup-state";
 import Search from "./searchBar";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
+import Logo from "../navbar/Goodreads.png";
 
 import { useEffect } from "react";
 import {
@@ -19,6 +20,7 @@ import {
   useMediaQuery,
   useTheme,
 } from "@mui/material";
+import { height } from "@mui/system";
 
 const Navbar = () => {
   const [value, setvalue] = useState();
@@ -29,13 +31,17 @@ const Navbar = () => {
 
   const [items, setItems] = useState([]);
   const [categoryName, setCategoryName] = useState("");
+  console.log(categoryName);
+  const handle = (e) => {
+    console.log(e.target.value);
+  };
 
-  useEffect(() => {
-    axios
-      .get("http://localhost:5000/api/book/:category")
-      .then((response) => setItems(response.data))
-      .catch((error) => console.error(error));
-  }, []);
+  // useEffect(() => {
+  //   axios
+  //     .get("http://localhost:5000/api/book/:category")
+  //     .then((response) => setItems(response.data))
+  //     .catch((error) => console.error(error));
+  // }, []);
 
   return (
     <PopupState variant="popover" popupId="demo-popup-menu">
@@ -43,7 +49,13 @@ const Navbar = () => {
         <React.Fragment>
           <AppBar sx={{ background: "#F4F1EA" }}>
             <Toolbar>
-              <Typography>GoodReads</Typography>
+              <Typography>
+                <img
+                  src={Logo}
+                  alt="Logo"
+                  style={{ width: "220px", height: "50px" }}
+                />
+              </Typography>
               {isMatch ? (
                 <>
                   <DrawerComp />
@@ -63,18 +75,6 @@ const Navbar = () => {
                     <Button>
                       <NavLink to="/mybook"> My Book</NavLink>
                     </Button>
-
-                    <Button {...bindTrigger(popupState)}>Browse</Button>
-                    <Menu {...bindMenu(popupState)}>
-                      {items.map((item) => (
-                        <MenuItem
-                          key={item.category}
-                          onClick={() => setCategoryName(item.category)}
-                        >
-                          {item.category}
-                        </MenuItem>
-                      ))}
-                    </Menu>
 
                     <Tab />
                   </Tabs>

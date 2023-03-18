@@ -10,9 +10,8 @@ const cartSlice = createSlice({
   reducers: {
     add: (state, action) => {
       //cartItem control
-      let cartItem = state.cart.find((q) => q.id == action.payload.id);
-      console.log(state.cart);
-      if (cartItem == undefined) {
+      let cartItem = state.cart.find((q) => q._id === action.payload._id);
+      if (cartItem === undefined) {
         let newCartItem = {
           _id: action.payload._id,
           title: action.payload.title,
@@ -20,10 +19,9 @@ const cartSlice = createSlice({
           category: action.payload.category,
           image: action.payload.image,
         };
-
         state.cart.push(newCartItem);
       } else {
-        state.cart = state.cart.filter((q) => q.id != action.payload.id);
+        state.cart = state.cart.filter((q) => q._id !== action.payload._id);
       }
     },
     remove: (state, action) => {
